@@ -22,47 +22,45 @@ export const Tweet: FC<TweetProps> = ({ text, user, classes }: TweetProps): Reac
     return (
         <div>
             <Paper className={classnames(classes.tweetsHeader, classes.tweet)} variant="outlined">
-                <Grid container spacing={3}>
-                    <Grid item xs={1}>
-                        <Avatar
-                            className={classes.tweetAvatar}
-                            src={user.avatarUrl}
-                            alt={`user profile ${user.fullname}`}
-                        />
-                    </Grid>
-                    <Grid item xs={11}>
-                        <Typography>
-                            <b>{user.fullname}</b>
-                            <span className={classes.tweetUserName}>{user.username}</span>
-                        </Typography>
-                        <Typography variant="body1" gutterBottom>
-                            {text}
-                        </Typography>
-                        <div className={classes.tweetFooter}>
-                            <div>
-                                <IconButton>
-                                    <CommentIcon fontSize="small" />
-                                </IconButton>
-                                <span>1</span>
-                            </div>
-                            <div>
-                                <IconButton>
-                                    <RepostIcon fontSize="small" />
-                                </IconButton>
-                            </div>
-                            <div>
-                                <IconButton>
-                                    <LikeIcon fontSize="small" />
-                                </IconButton>
-                            </div>
-                            <div>
-                                <IconButton>
-                                    <ReplyIcon fontSize="small" />
-                                </IconButton>
-                            </div>
+                <Avatar
+                    className={classes.tweetAvatar}
+                    src={user.avatarUrl}
+                    alt={`user profile ${user.fullname}`}
+                />
+                <div >
+                    <Typography>
+                        <b>{user.fullname}</b>
+                        <span className={classes.tweetUserName}>{user.username}</span>&nbsp;
+                            <span className={classes.tweetUserName}>.</span>
+                        <span className={classes.tweetUserName}>1 h</span>
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        {text}
+                    </Typography>
+                    <div className={classes.tweetFooter}>
+                        <div>
+                            <IconButton>
+                                <CommentIcon fontSize="small" />
+                            </IconButton>
+                            <span>1</span>
                         </div>
-                    </Grid>
-                </Grid>
+                        <div>
+                            <IconButton>
+                                <RepostIcon fontSize="small" />
+                            </IconButton>
+                        </div>
+                        <div>
+                            <IconButton>
+                                <LikeIcon fontSize="small" />
+                            </IconButton>
+                        </div>
+                        <div>
+                            <IconButton>
+                                <ReplyIcon fontSize="small" />
+                            </IconButton>
+                        </div>
+                    </div>
+                </div>
             </Paper>
         </div>
     )

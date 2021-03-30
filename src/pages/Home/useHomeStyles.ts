@@ -13,9 +13,12 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         fontSize: 36
     },
     sideMenuList: {
-        listStyle: 'none',
+        maxWidth: 230,
+        top: 0,
+        margin: 0,
         padding: 0,
-        margin: 0
+        position: 'sticky',
+        listStyle: 'none',
     },
     sideMenuListItem: {
         '&:hover': {
@@ -50,9 +53,9 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         marginLeft: -5
     },
     sideMenuTweetButton: {
-        width: 230,
-        padding:theme.spacing(3),
-        marginTop:theme.spacing(2)
+        width: '80%',
+        padding: theme.spacing(3),
+        marginTop: theme.spacing(2)
     },
     tweetsWrapper: {
         height: '100%'
@@ -77,21 +80,121 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         height: theme.spacing(5)
     },
     tweetFooter: {
-        width: 450,
+        width: '80%',
         position: 'relative',
         left: -13,
         display: 'flex',
         justifyContent: 'space-between'
+    },
+    rightSide: {
+        paddingTop: 20,
+        position: 'sticky',
+        top: 0
+    },
+    rightSideBlock: {
+        backgroundColor: '#f5f8fa',
+        borderRadius: 15,
+        marginTop: 20,
+        '& .MuiList-root': {
+            paddingTop: 0
+        }
+    },
+    rightSideBlockHeader: {
+        borderTop: 0,
+        borderLeft: 0,
+        borderRight: 0,
+        backgroundColor: 'transparent',
+        padding: '13px 18px',
+        '& b': {
+            fontSize: 20,
+            fontWeight: 800
+        }
+    },
+    rightSideBlockItem: {
+        cursor: 'pointer',
+        '& .MuiTypography-body1': {
+            fontWeight: 700
+        },
+        '& .MuiListItemAvatar-root': {
+            minWidth: 50
+        },
+        '& .MuiListItemText-root': {
+            margin: 0
+        },
+        '&:hover': {
+            backgroundColor: '#edf3f6'
+        }
+    },
+    addForm: {
+        padding: 20
+    },
+    addFormBody: {
+        display: 'flex',
+        width: '100%'
+    },
+    addFormBottom: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    addFormBottomActions: {
+        marginTop: 10,
+        paddingLeft: 70
+    },
+    addFormTextarea: {
+        width: '100%',
+        border: 0,
+        fontSize: 20,
+        outline: 'none',
+        fontFamily: 'inherit',
+        resize: 'none'
+    },
+    addFormBottomLine: {
+        height: 12,
+        backgroundColor: '#e6ecf0'
+    },
+    addFormCircleProgress: {
+        position: 'relative',
+        width: 20,
+        height: 20,
+        margin: '0 10px',
+        '& .MuiCircularProgress-root': {
+            position: 'absolute'
+        }
+    },
+    addFormBottomRight: {
+        display: 'flex',
+        alignItems: 'center'
     }
 }));
 
-export const SearchTextField = withStyles(() =>
+export const SearchTextField = withStyles((theme: Theme) =>
     createStyles({
-        input: {
-            borderRadius: 30,
-            backgroundColor: '#e6ecf0',
-            height: 45,
-            padding: 0
+        root: {
+            '& .MuiOutlinedInput-root': {
+                borderRadius: 30,
+                backgroundColor: '#e6ecf0',
+                padding: 0,
+                paddingLeft: 15,
+                '& .Mui-focused': {
+                    backgroundColor: '#fff',
+                    '& fieldset': {
+                        borderWidth: 1,
+                        borderColor: theme.palette.primary.main
+                    },
+                    '& svg path': { fill: theme.palette.primary.main }
+                },
+                '&:hover': {
+                    '& fieldset': { borderColor: 'transparent' }
+                },
+                '& fieldset': {
+                    borderColor: 'transparent',
+                    borderWidth: 1
+                }
+            },
+            '& .MuiOutlinedInput-input': {
+                padding: '12px 14px 14px 5px'
+            }
         }
     })
-)(InputBase)
+)(TextField)
