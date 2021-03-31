@@ -18,7 +18,7 @@ interface TweetProps {
 }
 
 
-export const Tweet: FC<TweetProps> = ({ text, user, classes }: TweetProps): ReactElement => {
+const Tweet: FC<TweetProps> = ({ text, user, classes }: TweetProps): ReactElement => {
     return (
         <div>
             <Paper className={classnames(classes.tweetsHeader, classes.tweet)} variant="outlined">
@@ -65,3 +65,5 @@ export const Tweet: FC<TweetProps> = ({ text, user, classes }: TweetProps): Reac
         </div>
     )
 }
+
+export default Tweet

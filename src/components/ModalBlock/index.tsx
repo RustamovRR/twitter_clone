@@ -27,7 +27,7 @@ const ModalBlock: React.FC<ModalBlockProps> = ({
   // const classes = useStyles();
 
   return (
-    <Dialog open={visible} onClose={onClose} aria-labelledby="signup-modal">
+    <Dialog maxWidth="md" open={visible} onClose={onClose} aria-labelledby="signup-modal">
       <DialogTitle id="form-dialog-title">
         <IconButton onClick={onClose} color="secondary" aria-label="close">
           <CloseIcon style={{ fontSize: 26 }} color="secondary" />

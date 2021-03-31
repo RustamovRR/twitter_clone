@@ -86,6 +86,8 @@ export const useHomeStyles = makeStyles((theme: Theme) => ({
         display: 'flex',
         justifyContent: 'space-between'
     },
+    tweetIcon: {
+    },
     rightSide: {
         paddingTop: 20,
         position: 'sticky',

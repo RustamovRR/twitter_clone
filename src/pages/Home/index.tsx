@@ -1,14 +1,12 @@
 import React from 'react'
 import { Grid, Typography, Paper, Container, Avatar, TextareaAutosize, IconButton, CircularProgress, Button, InputAdornment, List, ListItem, ListItemText, Divider } from '@material-ui/core'
 import { SearchTextField, useHomeStyles } from './useHomeStyles';
-import { Tweet } from '../../components/Tweet';
-import { SideMenu } from '../../components/SideMenu';
-import classNames from 'classnames';
-import { ImageOutlined, Search } from '@material-ui/icons';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
-import { classicNameResolver } from 'typescript';
+import Tweet from '../../components/Tweet';
+import SideMenu from '../../components/SideMenu';
+import AddTweetForm from '../../components/AddTweetForm';
+import { Search } from '@material-ui/icons';
 
-export const Home = () => {
+const Home = () => {
     const classes = useHomeStyles()
 
     return (
@@ -23,45 +21,7 @@ export const Home = () => {
                             <Typography variant="h6">Home</Typography>
                         </Paper>
                         <Paper>
-                            <div className={classes.addForm}>
-                                <div className={classes.addFormBody}>
-                                    <Avatar
-                                        className={classes.tweetAvatar}
-                                        src="https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80"
-                                    />
-                                    <TextareaAutosize
-                                        className={classes.addFormTextarea}
-                                        placeholder="what search?"
-                                    />
-                                </div>
-                                <div className={classes.addFormBottom}>
-                                    <div className={classNames(classes.tweetFooter)}>
-                                        <IconButton color="primary">
-                                            <ImageOutlined style={{ fontSize: 26 }} />
-                                        </IconButton>
-                                        <IconButton color="primary">
-                                            <EmojiEmotionsIcon style={{ fontSize: 26 }} />
-                                        </IconButton>
-                                    </div>
-                                    <div className={classes.addFormBottomRight}>
-                                        <span>280</span>
-                                        <div className={classes.addFormCircleProgress}>
-                                            <CircularProgress variant="static" size={20} />
-                                            <CircularProgress
-                                                style={{ color: 'rgba(0,0,0,0.1)' }}
-                                                variant="static"
-                                                size={20}
-                                                thickness={4}
-                                                value={100}
-                                            />
-                                        </div>
-                                        <Button color="primary" variant="contained" >
-                                            Tweet
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={classes.addFormBottomLine} />
+                            <AddTweetForm classes={classes} maxRows={15} />
                         </Paper>
                         {
                             [...new Array(20).fill(
@@ -116,3 +76,5 @@ export const Home = () => {
         </Container>
     )
 }
+
+export default Home
