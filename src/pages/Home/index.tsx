@@ -1,13 +1,24 @@
 import React from 'react'
-import { Grid, Typography, Paper, Container, Avatar, TextareaAutosize, IconButton, CircularProgress, Button, InputAdornment, List, ListItem, ListItemText, Divider } from '@material-ui/core'
+import { Grid, Typography, Paper, Container, CircularProgress, Button, InputAdornment, List, ListItem, ListItemText, Divider } from '@material-ui/core'
 import { SearchTextField, useHomeStyles } from './useHomeStyles';
 import Tweet from '../../components/Tweet';
 import SideMenu from '../../components/SideMenu';
 import AddTweetForm from '../../components/AddTweetForm';
 import { Search } from '@material-ui/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchTweets } from '../../store/ducks/tweets/actionCreators';
+import { selectIsTweetsLoading, selectTweetsItems } from '../../store/ducks/tweets/selectors';
 
 const Home = () => {
     const classes = useHomeStyles()
+    const dispatch = useDispatch()
+    const tweets = useSelector(selectTweetsItems)
+    const isLoading = useSelector(selectIsTweetsLoading)
+
+    useEffect(() => {
+        dispatch(fetchTweets())
+    }, [])
 
     return (
         <Container className={classes.wrapper} maxWidth="lg">
@@ -23,18 +34,15 @@ const Home = () => {
                         <Paper>
                             <AddTweetForm classes={classes} maxRows={15} />
                         </Paper>
-                        {
-                            [...new Array(20).fill(
+                        {isLoading
+                            ? <CircularProgress />
+                            : tweets.map((tweet) => (
                                 <Tweet
-                                    text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat magnam doloremque impedit reprehenderit illum maxime ducimus veritatis, exercitationem facere. Sunt architecto doloremque quos impedit voluptatibus vero quia eius numquam provident!"
+                                    text={tweet.text}
                                     classes={classes}
-                                    user={{
-                                        fullname: 'Hayrullo Ahmad',
-                                        username: '@Hayrullo',
-                                        avatarUrl: 'https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80'
-                                    }}
+                                    user={tweet.user}
                                 />
-                            )]
+                            ))
                         }
                     </Paper>
                 </Grid>
